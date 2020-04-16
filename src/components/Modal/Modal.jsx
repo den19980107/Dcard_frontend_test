@@ -1,7 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import './Modal.css'
 import deleteIcon from '../../assets/delete.svg';
-import { useState } from 'react';
 const Modal = ({ visable, title, onCancel, children }) => {
     const [ref, setRef] = useState(null)
     const [scrollRef, setScrollRef] = useState(null)

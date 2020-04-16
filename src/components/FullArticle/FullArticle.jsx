@@ -1,9 +1,8 @@
-import React from 'react';
-// import component
-import { useEffect } from 'react';
-import api from '../../api';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import api from '../../api';
+
+// import component
 import { FullArticleTitle } from '../Title/Title'
 import Loading from '../Loading/Loading';
 const FullArticle = ({ id }) => {
