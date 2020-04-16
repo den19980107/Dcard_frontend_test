@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Article.css'
 // import component 
 import Reactions from '../Reactions/Reactions';
@@ -7,12 +7,12 @@ import { Title } from '../Title/Title';
 import Modal from '../Modal/Modal';
 import FullArticle from '../FullArticle/FullArticle'
 import Avatar from '../Avatar/Avatar'
-import api from '../../api/index'
 
 const Article = ({ article, reference }) => {
     const [isShowModal, setIsShowModal] = useState(false);
-
+    const [isRead, setIsRead] = useState(false);
     const showModal = () => {
+        setIsRead(true)
         setIsShowModal(true)
     }
     const hideModal = () => {
@@ -20,14 +20,14 @@ const Article = ({ article, reference }) => {
     }
     return (
         <React.Fragment>
-            <div style={{ padding: "1rem 2rem" }} id={article.id} ref={reference ? reference : null} onClick={showModal}>
+            <div className="articleContainer" id={article.id} ref={reference ? reference : null} onClick={showModal}>
                 <div style={{ marginBottom: "1rem" }}>
                     <Title article={article}></Title>
                 </div>
                 <div style={{ width: "100%", display: "flex" }}>
                     {/* 如果沒有照片的話就讓標題跟內容的寬度變成 100% */}
                     <div style={{ width: article.media.length !== 0 ? "90%" : "100%" }}>
-                        <div className="title">
+                        <div className={isRead ? "title-read" : "title-not-read"}>
                             {/* title */}
                             <span >{article.title}</span>
                         </div>
@@ -50,7 +50,7 @@ const Article = ({ article, reference }) => {
                 visable={isShowModal}
                 onCancel={hideModal}
                 title={
-                    <div style={{ display: "flex", padding: "1rem 0", marginBottom: "1rem" }}>
+                    <div style={{ display: "flex", padding: "1rem 0" }}>
                         <div style={{ marginRight: "1rem", display: "flex", justifyContent: "center", flexDirection: "column" }}>
                             <Avatar
                                 gender={article.gender}
@@ -58,15 +58,18 @@ const Article = ({ article, reference }) => {
                                 size={50}
                             ></Avatar>
                         </div>
-                        <div >
+                        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                             <div>
                                 {/* name */}
-                                {article.forumName}
+                                {article.school ? article.school : "匿名"}
                             </div>
-                            <div>
-                                {/* department */}
-                                {`@${article.department}`}
-                            </div>
+                            {article.department ?
+                                <div>
+                                    {/* department */}
+                                    <span style={{ color: "rgb(51, 151, 207)" }}>{`@${article.department}`}</span>
+                                </div> :
+                                <></>
+                            }
                         </div>
                     </div>
                 }

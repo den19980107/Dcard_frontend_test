@@ -1,11 +1,11 @@
 import React from 'react';
-import deleteIcon from '../../assets/delete.svg';
 // import component
 import { useEffect } from 'react';
 import api from '../../api';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FullArticleTitle } from '../Title/Title'
+import Loading from '../Loading/Loading';
 const FullArticle = ({ id }) => {
     const [fullArticle, setFullArticle] = useState(null)
     useEffect(() => {
@@ -126,9 +126,7 @@ const FullArticle = ({ id }) => {
         );
     } else {
         return (
-            <div>
-                loading...
-            </div>
+            <Loading></Loading>
         )
     }
 };

@@ -19,7 +19,7 @@ const Reactions = ({ reactions, commentCount }) => {
             count += reaction.count
         }
         setReactionCount(count)
-    })
+    }, [])
 
     return (
         <div style={{ display: "flex" }}>
@@ -46,11 +46,15 @@ const Reactions = ({ reactions, commentCount }) => {
                     })
                 }
             </div>
-            <div style={{ marginRight: "1rem" }}>
-                {reactionCount}
+            <div style={{ marginRight: "1rem", display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
+                    <span style={{ color: "#bbb" }}>{reactionCount}</span>
+                </div>
             </div>
-            <div style={{ marginRight: "1rem" }}>
-                {`回應 ${commentCount}`}
+            <div style={{ marginRight: "1rem", display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
+                    <span style={{ color: "#bbb" }}> {`回應 ${commentCount}`}</span>
+                </div>
             </div>
         </div>
     );
@@ -58,7 +62,7 @@ const Reactions = ({ reactions, commentCount }) => {
 
 const Reaction = ({ url }) => {
     return (
-        <div style={{ width: "20px", height: "20px" }}>
+        <div style={{ width: "20px", height: "20px", display: "flex", justifyContent: "center", flexDirection: "column" }}>
             < img src={url} style={{ width: "20px", height: "20px" }}></img>
         </div >
     )

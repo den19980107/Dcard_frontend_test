@@ -1,4 +1,13 @@
-.title {
+.title-read {
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.95);
+}
+
+.title-not-read {
     padding-right: 1rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -17,3 +26,15 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
+.articleContainer {
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .articleContainer{
+        padding: 1rem 0.5rem;
+    }
+  }

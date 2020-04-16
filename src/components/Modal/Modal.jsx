@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import './Modal.css'
 import deleteIcon from '../../assets/delete.svg';
 import { useState } from 'react';
-import { useEffect } from 'react';
 const Modal = ({ visable, title, onCancel, children }) => {
     const [ref, setRef] = useState(null)
     const [scrollRef, setScrollRef] = useState(null)
@@ -34,6 +33,7 @@ const Modal = ({ visable, title, onCancel, children }) => {
                 style={{
                     background: "white",
                     maxHeight: "calc(100vh)",
+                    minHeight: "calc(100vh)",
                     overflowY: "auto",
                     padding: "0 4rem"
                 }}

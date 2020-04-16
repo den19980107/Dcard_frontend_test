@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
-import api from './api';
+import React, { useState, useRef, useCallback } from 'react';
 import useArticles from './hooks/useArticle';
 import Article from './components/Article/Article';
+import Loading from './components/Loading/Loading';
 
 function App() {
     const [before, setBefore] = useState();
-    const [lastArticleId, setLastArticleId] = useState();
     const observer = useRef();
     const {
         loading,
@@ -18,7 +17,6 @@ function App() {
         if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) {
-                console.log("visable")
                 setBefore(node.id)
             }
         })
@@ -27,8 +25,6 @@ function App() {
 
     return (
         <div className="App">
-            {loading && <div>loading...</div>}
-            {error && <div>error</div>}
             <div className="container" style={{ background: "white" }}>
                 {articles.map((article, index) => {
                     if (articles.length === index + 1) {
@@ -47,6 +43,8 @@ function App() {
                         )
                     }
                 })}
+                {loading && <Loading></Loading>}
+                {error && <div>error</div>}
             </div>
         </div>
     );
