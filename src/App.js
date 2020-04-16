@@ -33,14 +33,14 @@ function App() {
                 {articles.map((article, index) => {
                     if (articles.length === index + 1) {
                         return (
-                            <div>
+                            <div key={index}>
                                 <Article reference={lastArticleElementRef} article={article}></Article>
                                 <hr></hr>
                             </div>
                         )
                     } else {
                         return (
-                            <div>
+                            <div key={index}>
                                 <Article article={article}></Article>
                                 <hr></hr>
                             </div>
